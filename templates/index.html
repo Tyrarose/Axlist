@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trading Rules Checklist</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>My Trading Rules Checklist</h1>
+
+        <!-- Form to add a new rule -->
+        <form action="/add_rule" method="POST" class="mb-3">
+            <div class="input-group">
+                <input type="text" name="new_rule" class="form-control" placeholder="Add a new rule" required>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Add Rule</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Display the list of rules -->
+        <ul class="list-group mb-3">
+            {% for rule in rules %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <input type="checkbox" class="custom-checkbox" id="rule-{{ rule.id }}" {% if rule.checked %} checked {% endif %} onclick="toggleRule('{{ rule.id }}', this.checked)">
+                    <label for="rule-{{ rule.id }}" class="ml-2 {% if rule.checked %} text-decoration-line-through {% endif %}">{{ rule.text }}</label>
+                    <form action="/delete_rule/{{ rule.id }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">🗑️</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Actions to reset or delete all rules -->
+        <div class="text-center mb-3">
+            <form action="/reset_rules" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-secondary">Uncheck all boxes</button>
+            </form>
+            <form action="/delete_all" method="POST" style="display: inline;">
+                <button type="submit" class="btn btn-danger ml-5">Delete All Rules</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleRule(ruleId, checked) {
+            fetch(`/toggle_rule/${ruleId}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({checked: checked})
+            }).then(res => res.json())
+            .then(data => {
+                console.log("Toggled rule:", data);
+                // You can add additional functionality here to update the UI, e.g., strikethrough
+            });
+        }
+    </script>
+</body>
+</html>

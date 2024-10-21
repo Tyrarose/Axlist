@@ -1,0 +1,98 @@
+body {
+    background-color: #080D10; /* Dark background for crypto vibe */
+    color: #e0e0e0; /* Light text color */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+    background: linear-gradient(218deg, #080d10, #44aa91);
+    background-size: 400% 400%;
+
+
+        background: linear-gradient(218deg, #080d10, #49907f, #080d10, #080d10);
+        background-size: 800% 800%;
+    
+        -webkit-animation: AnimationName 55s ease infinite;
+        -moz-animation: AnimationName 55s ease infinite;
+        animation: AnimationName 55s ease infinite;
+    }
+    
+    @-webkit-keyframes AnimationName {
+        0%{background-position:91% 0%}
+        50%{background-position:10% 100%}
+        100%{background-position:91% 0%}
+    }
+    @-moz-keyframes AnimationName {
+        0%{background-position:91% 0%}
+        50%{background-position:10% 100%}
+        100%{background-position:91% 0%}
+    }
+    @keyframes AnimationName {
+        0%{background-position:91% 0%}
+        50%{background-position:10% 100%}
+        100%{background-position:91% 0%}
+    }
+.container {
+    margin: 0 20px; /* Add some margin for responsiveness */
+    border: 1px solid #A0C2AD; /* Border to give it a card-like feel */
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #1e1e1e; /* Darker card background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #267387; /* Crypto green color for headings */
+    text-align: center;
+}
+
+.btn-primary, .btn-secondary {
+    border-radius: 20px; /* Rounded button styles */
+    transition: background-color 0.3s, transform 0.3s;
+}
+.btn-add{
+    background-color: #44AA91;
+    border: 0px;
+}
+
+.btn-add:hover{
+    background-color:#267387 ;
+    border: 0px;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.list-group-item {
+    display: flex;
+            justify-content: space-between;
+            align-items: center;
+    background-color: transparent; /* Transparent list item background */
+    border: none; /* No border for a cleaner look */
+    
+}
+
+.custom-checkbox {
+    width: 30px; /* Larger checkbox */
+    height: 30px; /* Larger checkbox */
+    margin-right: 10px; /* Space between checkbox and label */
+}
+
+.checkbox-label {
+    flex-grow: 1;
+            margin-left: 10px;
+    font-size: 1.2rem; /* Larger text size for the label */
+    color: #e0e0e0; /* Label text color */
+    transition: text-decoration 0.2s ease; /* Smooth transition for strikethrough */
+}
+
+.checkbox-label.checked {
+    text-decoration: line-through; /* Strikethrough effect */
+}
+
+.input-group input {
+    border-radius: 20px; /* Rounded input */
+}
